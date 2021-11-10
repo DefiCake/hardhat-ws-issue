@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "typeRoots": ["./node_modules/@types"],
+    "types": [],
+    "outDir": "./build"
+  },
+  "include": ["./src"],
+  "exclude": ["hardhat.config.ts", "test/**/*", "test-integration/**/*", "deploy", "deployments", "scripts"]
+}

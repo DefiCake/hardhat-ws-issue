@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  hardhat:
+    build:
+      context: .
+      dockerfile: ./hardhat.Dockerfile
+    environment:
+      - FORKING_URL=${ALCHEMY_MAINNET_HTTPS}
+    ports:
+      - 8545:8545
+    # logging:
+    #   driver: none
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - PROVIDER=ws://hardhat:8545
+      - WAIT_HOST=hardhat:8545
+    depends_on:
+      - hardhat
